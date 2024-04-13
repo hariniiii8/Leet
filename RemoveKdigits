@@ -1,0 +1,44 @@
+class Solution {
+public:
+    string removeKdigits(string num, int k) {
+        string nums=num;
+     int n = nums.size();
+         string ans="";
+
+         for(int i=0;i<n;i++)
+         {
+            
+            while(!ans.empty() && ans.back()>nums[i] && k>0)
+            {
+                ans.pop_back();
+                k--;
+            }
+
+            ans.push_back(nums[i]); 
+
+         }
+
+        while(!ans.empty() && k>0)   
+        {
+            ans.pop_back();
+            k--;
+        }
+         
+        int i=0;
+        while(ans[i]=='0' && i<ans.size())  
+        i++;
+
+        ans = ans.substr(i,ans.size());
+
+        if(ans.empty())  
+         return "0";
+
+         return ans;   
+    }
+};
+
+
+Monotonic stack, tried with recursion as well
+
+
+
